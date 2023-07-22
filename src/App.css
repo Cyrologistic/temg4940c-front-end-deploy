@@ -1,0 +1,477 @@
+/* App.css */
+.App {
+  font-family: sans-serif;
+}
+
+.title-bar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.sections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* center the sections horizontally */
+  align-items: flex-start; /* align the sections to the top of the container */
+}
+
+.section {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 10px;
+  width: calc((100% / 3) - 20px); /* change to use calc() to calculate the width */
+  margin: 10px;
+  box-sizing: border-box; /* add box-sizing to include padding and border in width calculation */
+}
+
+.section h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.card-list {
+  background-color: #ebecf0;
+  border-radius: 3px;
+  padding: 8px;
+  margin-top: 8px;
+  min-height: 550px;
+}
+
+.card {
+  background-color: #eee;
+  border: 3px solid #222;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column; /* change to flex-direction: column to stack title and description */
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
+  position: relative; /* add position relative to make sure that absolute positioned elements are positioned relative to the card */
+}
+
+.card:hover {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.card:focus {
+  outline: none;
+}
+
+.card input[type='checkbox'] {
+  position: absolute; /* change to position absolute */
+  top: 10px; /* add top and right properties to position the checkbox */
+  right: 10px;
+  margin: 0;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.card input[type='checkbox']:checked ~ .delete-button {
+  display: block;
+}
+
+.card input[type='checkbox']:checked ~ .card-title {
+  text-decoration: line-through;
+}
+
+.card input[type='checkbox']:checked ~ .card-description {
+  display: none;
+}
+
+.card input[type='checkbox']:not(:checked) ~ .delete-button {
+  display: none;
+}
+
+.card input[type='checkbox']:not(:checked) ~ .card-title {
+  text-decoration: none;
+}
+
+.card input[type='checkbox']:not(:checked) ~ .card-description {
+  display: block;
+}
+
+.card .delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 0;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  display: none; /* hide delete button by default */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card .delete-button:hover {
+  background-color: #eee;
+}
+
+.card .delete-button:focus {
+  outline: none;
+}
+
+.card .delete-button:active {
+  transform: scale(0.95);
+}
+
+.card .delete-button::before,
+.card .delete-button::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 15px;
+  background-color: #333;
+}
+
+.card .delete-button::before {
+  transform: rotate(45deg);
+}
+
+.card .delete-button::after {
+  transform: rotate(-45deg);
+}
+
+.card .delete-button:hover::before,
+.card .delete-button:hover::after {
+  background-color: #fff;
+}
+
+
+
+.card input[type='text'] {
+  margin-right: 40px;
+  margin-bottom: 10px; /* add margin to create space between input and textarea */
+  width: 90%;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1.5px solid #ddd;
+}
+
+.card input[type='text']:focus {
+  outline: none;
+}
+
+.card textarea {
+  width: 100%;
+  height: 70px;
+  resize: none;
+  border: none;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: #fff;
+  border: 1.5px solid #ddd;
+}
+
+.card textarea:focus {
+  outline: none;
+}
+
+.add-card {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  height: 50px;
+  width: 50px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.add-card:hover {
+  background-color: #ddd;
+}
+
+.add-card:focus {
+  outline: none;
+}
+
+.add-card:active {
+  transform: scale(0.95);
+}
+
+input[type='checkbox'] {
+  margin-right: 10px;
+}
+
+/* Add styling for the card title and description */
+.card-title {
+  border: 2px solid #ddd;
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #fff;
+  box-sizing: border-box;
+}
+
+.card-description {
+  width: 100%;
+  margin-top: 10px;
+  position: relative; /* add position relative to make sure that absolute positioned elements are positioned relative to the card */
+}
+
+.card-description .edit-button {
+  position: absolute; /* add position absolute */
+  top: 10px; /* add top and right properties to position the edit button */
+  right: 10px;
+  margin: 0;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card-description .edit-button:hover {
+  background-color: #ddd;
+}
+
+.card-description .edit-button:focus {
+  outline: none;
+}
+
+.card-description .edit-button:active {
+  transform: scale(0.95);
+}
+
+.card-description .save-button {
+  position: absolute; /* add position absolute */
+  top: 10px; /* add top and right properties to position the save button */
+  right: 40px;
+  margin: 0;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card-description .save-button:hover {
+  background-color: #ddd;
+}
+
+.card-description .save-button:focus {
+  outline: none;
+}
+
+.card-description .save-button:active {
+  transform: scale(0.95);
+}
+
+.card-description input[type='text'] {
+  margin-right: 10px;
+  width: 100%;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-description input[type='text']:focus {
+  outline: none;
+}
+
+.card-description textarea {
+  width: 100%;
+  height: 70px;
+  resize: none;
+  border: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.card-description textarea:focus {
+  outline: none;
+}
+
+.delete-container {
+  display: flex;
+  align-items: center;
+}
+
+.delete-btn {
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  color: #757575;
+  cursor: pointer;
+  font-size: 24px;
+  transition: color 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+  color: #f44336;
+}
+
+.card-icons {
+  display: flex;
+  align-items: center;
+}
+
+.edit-btn {
+  margin-right: 8px;
+  background-color: transparent;
+  border: none;
+  color: #757575;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  color: #757575;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.delete-btn:hover {
+  color: #f44336;
+}
+
+.card input:focus,
+.card textarea:focus {
+  outline: none;
+  border: 2px solid #0079bf;
+  box-shadow: none;
+}
+
+.card input[readonly],
+.card textarea[readonly] {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.card input[readonly]:focus,
+.card textarea[readonly]:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.card-icons button:focus {
+  outline: none;
+}
+
+.search-bar {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  color: #333;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.search-bar:focus {
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
+}
+
+.MuiModal-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MuiBox-root {
+  background-color: #fff;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  width: 400px;
+}
+
+.MuiBox-root h2 {
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.MuiBox-root input[type="text"],
+.MuiBox-root textarea {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.MuiBox-root input[type="text"]:focus,
+.MuiBox-root textarea:focus {
+  outline: none;
+  border-color: #0079bf;
+  box-shadow: 0 0 0 2px rgba(0, 121, 191, 0.2);
+}
+
+.MuiBox-root button {
+  background-color: #0079bf;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.MuiBox-root button:hover {
+  background-color: #0067a3;
+}
